@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2879892022225410675}
   - component: {fileID: 1730708798530308366}
   - component: {fileID: 1230807569782993998}
+  - component: {fileID: 4797484334593410875}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -250,3 +251,16 @@ MonoBehaviour:
   lookSensitivity: 10
   jumpForce: 10
   yLookClamp: 70
+--- !u!114 &4797484334593410875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337114524710381572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8fb6ac1e8f1bf49933bcc29770e951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipedWeapon: {fileID: 11400000, guid: b1d30eb1d1342d542ae1ec85a7cd95b6, type: 2}
