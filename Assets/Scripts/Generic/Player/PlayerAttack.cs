@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
     private Camera charCamera;
     private float timeSinceLastShot;
     private float currentBulletsInMag;
-    private float numberOfMags = 2;
+    private float totalAmmo;
     
     // Start is called before the first frame update
     public void Start()
@@ -23,6 +23,8 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
         // Variable initialisation.
         timeSinceLastShot = equipedWeapon.TimeBetweenShots;
         currentBulletsInMag = equipedWeapon.magazineSize;
+
+        totalAmmo = 2 * equipedWeapon.magazineSize;
     }
 
     // Update is called once per frame
@@ -40,6 +42,40 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
         {
             FireWeapon();
         }
+
+        if (Input.GetButton("Reload"))
+        {
+            ReloadWeapon();
+        }
+    }
+
+    private void ReloadWeapon()
+    {
+        if (CanReload())
+        {
+            float bulletsUsed = equipedWeapon.magazineSize - currentBulletsInMag;
+
+            if (totalAmmo > bulletsUsed)
+            {
+                totalAmmo -= bulletsUsed;
+                currentBulletsInMag = equipedWeapon.magazineSize;
+            }
+            else
+            {
+                currentBulletsInMag += bulletsUsed;
+                totalAmmo = 0;
+            }
+        }
+    }
+
+    private bool CanReload()
+    {
+        if (currentBulletsInMag != equipedWeapon.magazineSize && totalAmmo != 0)
+        {
+            return true;
+        }
+        
+        return false;
     }
 
     private void FireWeapon()
