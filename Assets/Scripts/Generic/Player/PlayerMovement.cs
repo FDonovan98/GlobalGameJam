@@ -12,13 +12,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public float groundDelta;
 
     [SerializeField]
-    protected float lookSensitivity = 1.0f;
+    public float lookSensitivity = 1.0f;
     [SerializeField]
-    protected float jumpForce = 10.0f;
+    public float jumpForce = 10.0f;
 
     [SerializeField]
     // Acts as a vertical clamp on the camera to stop the player looking under themselves.
-    protected float yLookClamp = 70.0f;
+    public float yLookClamp = 70.0f;
 
     // Used to check if the player is grounded.
     // This is used for stopping the player jumping mid air.
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     // Used when calculating camera movement from mouse.
     protected Quaternion CharCameraTargetRotation;
 
-    protected void Start()
+    public void Start()
     {
         
         // Sets the object name in heirarchy to the players net name.
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         CharCameraTargetRotation = charCamera.transform.localRotation;
     }
 
-    protected void Update()
+    public void Update()
     {
         // If the player isn't the client returns.
         if (!photonView.IsMine)

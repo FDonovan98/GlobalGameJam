@@ -22,7 +22,9 @@ public class PlayerHealth
         }
         else
         {
-            currentHealth = Mathf.Min(currentHealth - damage, 100);
+            currentHealth = Mathf.Min(currentHealth - damage, maxHealth);
         }
+
+        Debug.Log(player.name + "health is " + currentHealth);
     }
 }

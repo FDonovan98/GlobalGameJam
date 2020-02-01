@@ -7,6 +7,7 @@ using Photon.Pun;
 
 public class PlayerAttack : MonoBehaviourPunCallbacks
 {
+    [SerializeField]
     public WeaponObject equipedWeapon;
     
     private Camera charCamera;
@@ -15,7 +16,7 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
     private float numberOfMags = 2;
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         charCamera = this.GetComponentInChildren<Camera>();
 
@@ -25,7 +26,7 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         // Aborts the script if the GameObject doesn't belong to the client.
         if (!photonView.IsMine)
@@ -71,12 +72,17 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void Shoot(Vector3 cameraPos, Vector3 cameraForward, float weaponRange, float weaponDamage)
+    public void Shoot(Vector3 cameraPos, Vector3 cameraForward, float weaponRange, int weaponDamage)
     {
         RaycastHit hit;
         if (Physics.Raycast(cameraPos, cameraForward, out hit, weaponRange))
         {
-            Debug.LogAssertion(hit.transform.gameObject.name);
+            Debug.Log(hit.transform.gameObject.name + " has been hit");
+            if (hit.transform.gameObject.tag == "Player")
+            {
+                hit.transform.GetComponent<PlayerController>().playerHealth.ChangePlayerHealth(weaponDamage);
+            }
+            
         }
     }
 }
