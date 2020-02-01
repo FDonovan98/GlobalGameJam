@@ -904,6 +904,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyController
       objectReference: {fileID: 0}
+    - target: {fileID: 5626507123289432732, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
+        type: 3}
+      propertyPath: PlayerCountDisplay
+      value: 
+      objectReference: {fileID: 1759359016}
+    - target: {fileID: 5626507123289432732, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
+        type: 3}
+      propertyPath: CountdownDisplay
+      value: 
+      objectReference: {fileID: 194310845}
+    - target: {fileID: 5626507123289432732, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
+        type: 3}
+      propertyPath: MaxWaitTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5626507123289432733, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -959,16 +974,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5626507123289432732, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
-        type: 3}
-      propertyPath: PlayerCountDisplay
-      value: 
-      objectReference: {fileID: 1759359016}
-    - target: {fileID: 5626507123289432732, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
-        type: 3}
-      propertyPath: CountdownDisplay
-      value: 
-      objectReference: {fileID: 194310845}
     - target: {fileID: 5626507123289432734, guid: 2e4355072d5e6bc4aa4202b2ba50fd23,
         type: 3}
       propertyPath: viewIdField
