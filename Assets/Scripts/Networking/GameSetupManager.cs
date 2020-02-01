@@ -1,21 +1,21 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class NetworkController : MonoBehaviourPunCallbacks
+public class GameSetupManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
+        CreatePlayer();
     }
 
-    public override void OnConnectedToMaster()
+    private void CreatePlayer()
     {
-        base.OnConnectedToMaster();
-
-        Debug.Log("Connection to " + PhotonNetwork.CloudRegion + " server successful!");
+        Debug.Log("Creating player");
+        PhotonNetwork.Instantiate(Path.Combine("Prefabs/Networking", "TestPlayer"), Vector3.zero, Quaternion.identity);
     }
 
     // Update is called once per frame
