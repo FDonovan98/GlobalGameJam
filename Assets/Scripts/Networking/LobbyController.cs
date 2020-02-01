@@ -18,6 +18,9 @@ public class LobbyController : MonoBehaviourPunCallbacks
     private int LobbySize;
 
     [SerializeField]
+    private int MinPlayerCount;
+
+    [SerializeField]
     private float MaxWaitTime;
 
     private float Countdown;
@@ -47,7 +50,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
         PlayerCountDisplay.text = PlayerCount + " / " + LobbySize;
 
-        if(PlayerCount > 1)
+        if(PlayerCount > MinPlayerCount)
         {
             ReadyToStart = true;
         }
