@@ -64,6 +64,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     protected void Update()
     {
+        // If the player isn't the client returns.
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         HandleUnlockingMouse();
 
         HandleCameraRotation();
