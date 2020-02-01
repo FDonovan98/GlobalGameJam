@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  startingTime: 300
 --- !u!114 &2119661083107936024
 MonoBehaviour:
   m_ObjectHideFlags: 0
