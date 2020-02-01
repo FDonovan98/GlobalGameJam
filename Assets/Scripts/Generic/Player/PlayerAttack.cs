@@ -80,7 +80,7 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
             Debug.Log(hit.transform.gameObject.name + " has been hit");
             if (hit.transform.gameObject.tag == "Player")
             {
-                hit.transform.GetComponent<PlayerController>().playerHealth.ChangePlayerHealth(weaponDamage);
+                hit.transform.GetComponent<PlayerController>().playerResource.ChangePlayerResource(PlayerResource.Resource.Health, weaponDamage);
             }
             
         }
