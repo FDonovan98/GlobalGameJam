@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// Author: Harry Donovan
+// Based off of from https://github.com/HDonovan96/Glass-Nomad.
+
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Objects/Create New Weapon")]
 public class WeaponObject : BaseObject

@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿// Author: Harry Donovan
+// Based off of from https://github.com/HDonovan96/Glass-Nomad.
+
 using UnityEngine;
 
 using Photon.Pun;
