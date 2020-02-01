@@ -109,7 +109,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         // Fetches camera movement.
         Vector3 mouseInput = MouseInput();
 
+        // Rotates the player based on x-axis mouse movement.
         Vector3 playerRotation = new Vector3(0.0f, mouseInput.x, 0.0f) * lookSensitivity;
+        transform.Rotate(playerRotation);
 
         // Holds camera rotation before being clamped.
         CharCameraTargetRotation *= Quaternion.Euler(-mouseInput.y * lookSensitivity, 0.0f, 0.0f);
