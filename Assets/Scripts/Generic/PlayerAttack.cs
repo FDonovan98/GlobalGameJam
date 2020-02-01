@@ -48,21 +48,35 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
             RaycastHit hit;
             if (Physics.Raycast(charCamera.transform.position, charCamera.transform.forward, out hit, equipedWeapon.range))
             {
-                Debug.LogAssertion(hit.transform.gameObject.name);
+                photonView.RPC("Shoot", RpcTarget.All, charCamera.transform.position, charCamera.transform.forward, equipedWeapon.range, equipedWeapon.damagePerShot);
             }
         }
     }
 
+    // Checks if the weapon is ready to fire and reduces ammo.
+    // Also resets the time since last shot.
     private bool CanFire()
     {
         if (timeSinceLastShot > equipedWeapon.TimeBetweenShots)
         {
             if (currentBulletsInMag > 0)
             {
+                timeSinceLastShot = 0.0f;
+                currentBulletsInMag -= 1;
                 return true;
             }
         }
 
         return false;
+    }
+
+    [PunRPC]
+    public void Shoot(Vector3 cameraPos, Vector3 cameraForward, float weaponRange, float weaponDamage)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cameraPos, cameraForward, out hit, weaponRange))
+        {
+            Debug.LogAssertion(hit.transform.gameObject.name);
+        }
     }
 }
