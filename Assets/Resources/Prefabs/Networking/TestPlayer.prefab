@@ -97,10 +97,12 @@ GameObject:
   - component: {fileID: 1564899938525796357}
   - component: {fileID: 2879892022225410675}
   - component: {fileID: 1730708798530308366}
-  - component: {fileID: 1230807569782993998}
+  - component: {fileID: 4335425252627452928}
+  - component: {fileID: 2119661083107936024}
+  - component: {fileID: 5081641219753501624}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +234,20 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &1230807569782993998
+--- !u!114 &4335425252627452928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337114524710381572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c711850f3b6247b87b8fe52427a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+--- !u!114 &2119661083107936024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +261,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   sprintMultiplier: 2
-  groundDelta: 0.5
+  groundDelta: 0
   lookSensitivity: 10
   jumpForce: 10
   yLookClamp: 70
+--- !u!114 &5081641219753501624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337114524710381572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8fb6ac1e8f1bf49933bcc29770e951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipedWeapon: {fileID: 11400000, guid: b1d30eb1d1342d542ae1ec85a7cd95b6, type: 2}
