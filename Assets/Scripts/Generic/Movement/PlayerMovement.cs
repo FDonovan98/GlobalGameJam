@@ -11,9 +11,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public float sprintMultiplier = 2.0f;
     public float groundDelta;
 
+    [SerializeField]
     protected float lookSensitivity = 1.0f;
+    [SerializeField]
     protected float jumpForce = 10.0f;
 
+    [SerializeField]
     // Acts as a vertical clamp on the camera to stop the player looking under themselves.
     protected float yLookClamp = 70.0f;
 
@@ -77,7 +80,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         float z;
 
         // If the player is on the ground and has pressed space.
-        // Space key is hardcoded, this needs to change.
         if (Input.GetAxisRaw("Jump") != 0 && IsGrounded(Vector3.up))
         {
             y = jumpForce;
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         x = Input.GetAxisRaw("Horizontal") * movementSpeed;
         z = Input.GetAxisRaw("Vertical") * movementSpeed;
 
-        if (Input.GetAxisRaw("Sprint") == 1)
+        if (Input.GetAxisRaw("Sprint") != 0)
         {
             x *= sprintMultiplier;
             z *= sprintMultiplier;
