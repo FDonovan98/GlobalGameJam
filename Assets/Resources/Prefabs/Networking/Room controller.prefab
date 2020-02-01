@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8d27bbd2df6a418b6af386e8ab0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiplayerSceneIndex: 0
+  MultiplayerSceneIndex: 1
