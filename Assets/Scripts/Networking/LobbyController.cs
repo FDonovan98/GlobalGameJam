@@ -1,71 +1,138 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class LobbyController : MonoBehaviourPunCallbacks
 {
+    private PhotonView _PhotonView;
+
     [SerializeField]
-    private GameObject StartSearchButton; //Button for creating/joining games
+    private int GameSceneIndex;
     [SerializeField]
-    private GameObject CancelSearchButton; //Button used to stop searching for game
+    private int MenuSceneIndex;
+
+    private int PlayerCount;
+    private int LobbySize;
+
     [SerializeField]
-    private GameObject QuitGameButton;
+    private int MinPlayerCount;
+
     [SerializeField]
-    private int MaxLobbySize; //Max players per lobby
+    private float MaxWaitTime;
 
-    public override void OnConnectedToMaster()
+    private float Countdown;
+    [SerializeField]
+    private Text PlayerCountDisplay;
+    [SerializeField]
+    private Text CountdownDisplay;
+
+    bool ReadyToStart = false;
+
+    bool GameStarted = false;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        base.OnConnectedToMaster();
-        PhotonNetwork.AutomaticallySyncScene = true;
-        StartSearchButton.SetActive(true);
-        QuitGameButton.SetActive(true);
+        _PhotonView = GetComponent<PhotonView>();
+        Countdown = MaxWaitTime;
+
+        PlayerCountUpdate();
     }
 
-    public void JoinLobby()
+    // Update is called once per frame
+    void PlayerCountUpdate()
     {
-        StartSearchButton.SetActive(false);
-        CancelSearchButton.SetActive(true);
-        PhotonNetwork.JoinRandomRoom(); //Try to join existing room
-        Debug.Log("Searching for game");
+        PlayerCount = PhotonNetwork.PlayerList.Length;
+        LobbySize = PhotonNetwork.CurrentRoom.MaxPlayers;
+
+        PlayerCountDisplay.text = PlayerCount + " / " + LobbySize;
+
+        if(PlayerCount > MinPlayerCount)
+        {
+            ReadyToStart = true;
+        }
+        else
+        {
+            ReadyToStart = false;
+        }
     }
 
-    public override void OnJoinRandomFailed(short returnCode, string message)
+    public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        base.OnJoinRandomFailed(returnCode, message);
-        Debug.Log("Failed to join random lobby");
-        CreateLobby();
+        base.OnPlayerEnteredRoom(newPlayer);
+
+        PlayerCountUpdate();
+
+        if(PhotonNetwork.IsMasterClient)
+        {
+            _PhotonView.RPC("RPC_SendTimer", RpcTarget.Others, Countdown);
+        }
     }
 
-    void CreateLobby()
+    [PunRPC]
+    private void RPC_SendTimer(float time)
     {
-        Debug.Log("Creating lobby");
-        int RandomRoomNumber = Random.Range(0, 10000);
-        RoomOptions LobbyOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)MaxLobbySize };
-        PhotonNetwork.CreateRoom("Lobby" + RandomRoomNumber, LobbyOptions);
-        Debug.Log("Successfully created Lobby" + RandomRoomNumber);
+        Countdown = time;
+
+        if(time < MaxWaitTime)
+        {
+            MaxWaitTime = time;
+        }
     }
 
-    public override void OnCreateRoomFailed(short returnCode, string message)
+    public void QuitToMenu()
     {
-        base.OnCreateRoomFailed(returnCode, message);
-        Debug.Log("Failed to create room. Trying again..");
-        CreateLobby();
-    }
-
-    public void CancelGameSearch()
-    {
-        CancelSearchButton.SetActive(false);
-        StartSearchButton.SetActive(true);
-        PhotonNetwork.LeaveRoom();
-    }
-
-    public void QuitGame()
-    {
-        if(PhotonNetwork.InRoom)
+        if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene(MenuSceneIndex);
         }
+    }
 
-        Application.Quit();
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+
+        PlayerCountUpdate();
+    }
+
+    private void Update()
+    {
+        if(ReadyToStart)
+        {
+            Countdown -= Time.deltaTime;
+            string timer = string.Format("{0:00}", Countdown);
+            CountdownDisplay.text = timer;
+
+            if(Countdown <= 0)
+            {
+                if (!GameStarted)
+                {
+                    StartGame();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+    }
+
+    private void StartGame()
+    {
+        GameStarted = true;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("Starting Game");
+            PhotonNetwork.LoadLevel(GameSceneIndex);
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+        }
+        else
+        {
+            return;
+        }
     }
 }

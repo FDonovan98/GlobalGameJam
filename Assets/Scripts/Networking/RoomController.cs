@@ -1,11 +1,14 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomController : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
-    private int MultiplayerSceneIndex;
+    private int LobbySceneIndex;
 
     public override void OnEnable()
     {
@@ -21,15 +24,7 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log("Joined room");
-        StartGame();
-    }
-
-    private void StartGame()
-    {
-        if(PhotonNetwork.IsMasterClient)
-        {
-            Debug.Log("Starting Game");
-            PhotonNetwork.LoadLevel(MultiplayerSceneIndex);
-        }
+        //StartGame();
+        SceneManager.LoadScene(LobbySceneIndex);
     }
 }

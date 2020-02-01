@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/EdMenuScene.unity
     guid: f4ec30d0d3d5b464091e53ab05974423
   - enabled: 1
+    path: Assets/Scenes/EdLobbyScene.unity
+    guid: 4e6ec26f90a7bda4aa63619d42126a5b
+  - enabled: 1
     path: Assets/Scenes/EdTestNetworkScene.unity
     guid: 3a1bafe46e483bd44b1b2ca0532cf583
   m_configObjects: {}

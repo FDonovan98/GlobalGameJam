@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7188833584234654495}
   - component: {fileID: 6082462565824556165}
   m_Layer: 0
-  m_Name: Lobby controller
+  m_Name: MainMenuController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
