@@ -21,6 +21,5 @@ public class PlayerController : MonoBehaviourPunCallbacks
     void Update()
     {
         playerResource.ChangePlayerResource(PlayerResource.Resource.Time, -Time.deltaTime);
-        Debug.Log(this.gameObject.name + " has " + playerResource.currentTime + " seconds left");
     }
 }

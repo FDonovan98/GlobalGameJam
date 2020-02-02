@@ -46,6 +46,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
     void PlayerCountUpdate()
     {
         PlayerCount = PhotonNetwork.PlayerList.Length;
+        Debug.Log(PlayerCount);
         LobbySize = PhotonNetwork.CurrentRoom.MaxPlayers;
 
         PlayerCountDisplay.text = PlayerCount + " / " + LobbySize;
