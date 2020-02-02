@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f9b0a107ff02e42b8f791097e711c5, type: 3}
   m_Name: SubMachineGun
   m_EditorClassIdentifier: 
-  objectModel: {fileID: 4300000, guid: c8680fab33c72bb4ba3e31987e0b0182, type: 3}
+  objectModel: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   range: 60
   damagePerShot: 34
   magazineSize: 25
