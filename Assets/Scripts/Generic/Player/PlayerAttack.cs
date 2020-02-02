@@ -5,6 +5,8 @@ using UnityEngine;
 
 using Photon.Pun;
 
+using UnityEngine.UI;
+
 public class PlayerAttack : MonoBehaviourPunCallbacks
 {
     [SerializeField]
@@ -46,6 +48,15 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
         if (Input.GetButton("Reload"))
         {
             ReloadWeapon();
+        }
+
+        Text[] allUI = this.gameObject.GetComponentsInChildren<Text>();
+        foreach (Text element in allUI)
+        {
+            if (element.gameObject.name == "TXT_Ammo")
+            {
+                element.text = "Ammo: " + currentBulletsInMag + " / " + totalAmmo;
+            }
         }
     }
 

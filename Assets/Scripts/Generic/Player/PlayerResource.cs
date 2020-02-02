@@ -6,7 +6,7 @@ public class PlayerResource
     public enum Resource
     {
         Health,
-        Time
+        Time,
     }
     public GameObject player;
     public int maxHealth;
@@ -49,7 +49,6 @@ public class PlayerResource
                 currentTime += value;
             }
         }
-
     }
 
     private void KillPlayer()
