@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class GameSetupManager : MonoBehaviour
+public class GameSetupManager : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     void Start()

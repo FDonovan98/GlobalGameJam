@@ -29,7 +29,7 @@ public class PlayerResource
         {
             if (currentHealth < -value)
             {
-                Debug.LogWarning("You have died. Bad luck ol' chum");
+                KillPlayer();
             }
             else
             {
@@ -42,7 +42,7 @@ public class PlayerResource
         {
             if (currentTime < -value)
             {
-                Debug.LogWarning("You have died. Bad luck ol' chum");
+                KillPlayer();
             }
             else
             {
@@ -50,6 +50,12 @@ public class PlayerResource
             }
         }
 
+    }
+
+    private void KillPlayer()
+    {
+        Debug.LogWarning("You have died. Bad luck ol' chum");
+        player.GetComponent<PlayerController>().shouldDie = true;
     }
 
 }
