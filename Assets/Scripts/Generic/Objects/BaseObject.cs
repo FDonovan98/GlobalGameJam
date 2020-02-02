@@ -11,4 +11,6 @@ public class BaseObject : ScriptableObject
         Uncommon,
         Rare
     };
+
+    public Mesh objectModel;
 }
