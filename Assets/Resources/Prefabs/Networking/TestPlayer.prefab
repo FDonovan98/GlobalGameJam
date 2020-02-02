@@ -262,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   sprintMultiplier: 2
-  groundDelta: 0
+  groundDelta: 1
   lookSensitivity: 10
   jumpForce: 10
   yLookClamp: 70
