@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5410744023302808016}
   - component: {fileID: 3084882990332086202}
   - component: {fileID: 4688517451825072795}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,8 +101,12 @@ GameObject:
   - component: {fileID: 4335425252627452928}
   - component: {fileID: 2119661083107936024}
   - component: {fileID: 5081641219753501624}
+<<<<<<< HEAD
   - component: {fileID: 8412111793200123204}
   m_Layer: 0
+=======
+  m_Layer: 9
+>>>>>>> b84287bb813491d6e343b9e41eb7fc85ed230bbd
   m_Name: TestPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
