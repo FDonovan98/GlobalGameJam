@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Photon.Pun;
 
+using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviourPunCallbacks
 {
     public PlayerResource playerResource;
@@ -18,6 +20,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         // Initialise attached scripts.
         playerResource = new PlayerResource(this.gameObject, maxHealth, startingTime);
+
+        
+        Text[] allUI = this.gameObject.GetComponentsInChildren<Text>();
+        foreach (Text element in allUI)
+        {
+            if (element.gameObject.name == "TXT_Health")
+            {
+                element.text = "Health: " + playerResource.currentHealth;
+            }
+        }
     }
 
     // Update is called once per frame

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Photon.Pun;
 
+using UnityEngine.UI;
+
 public class PlayerResource
 {
     public enum Resource
@@ -10,7 +12,7 @@ public class PlayerResource
     }
     public GameObject player;
     public int maxHealth;
-    protected int currentHealth;
+    public int currentHealth;
 
     public float currentTime;
 
@@ -36,7 +38,14 @@ public class PlayerResource
                 currentHealth = Mathf.Min(currentHealth + (int)value, maxHealth);
             }
 
-            Debug.Log(player.name + "health is " + currentHealth);
+            Text[] allUI = player.gameObject.GetComponentsInChildren<Text>();
+            foreach (Text element in allUI)
+            {
+                if (element.gameObject.name == "TXT_Health")
+                {
+                    element.text = "Health: " + currentHealth;
+                }
+            }
         }
         else if (type == Resource.Time)
         {
@@ -47,6 +56,15 @@ public class PlayerResource
             else
             {
                 currentTime += value;
+            }
+
+            Text[] allUI = player.gameObject.GetComponentsInChildren<Text>();
+            foreach (Text element in allUI)
+            {
+                if (element.gameObject.name == "TXT_Time")
+                {
+                    element.text = "Time: " + (int)currentTime;
+                }
             }
         }
     }
