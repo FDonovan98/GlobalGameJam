@@ -15,13 +15,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
     
     public bool shouldDie = false;
 
+    public float globalPingDelay = 300;
+    private float globalTime = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         // Initialise attached scripts.
         playerResource = new PlayerResource(this.gameObject, maxHealth, startingTime);
 
-        
         Text[] allUI = this.gameObject.GetComponentsInChildren<Text>();
         foreach (Text element in allUI)
         {
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        globalTime += Time.deltaTime;
+
         playerResource.ChangePlayerResource(PlayerResource.Resource.Time, -Time.deltaTime);
 
         if (shouldDie)
@@ -43,5 +47,24 @@ public class PlayerController : MonoBehaviourPunCallbacks
             PhotonNetwork.LeaveRoom();
             Debug.Log("Leaving Rom");
         }
+
+        if (Input.GetButtonDown("Ping") || globalTime > globalPingDelay)
+        {
+            DoRadarPing();
+            if (globalTime > globalPingDelay)
+            {
+                globalTime = 0.0f;
+            }
+            else
+            {
+                playerResource.ChangePlayerResource(PlayerResource.Resource.Time, -60);
+            }
+        }
+
+    }
+
+    private void DoRadarPing()
+    {
+        Debug.Log("Radar ping");
     }
 }
