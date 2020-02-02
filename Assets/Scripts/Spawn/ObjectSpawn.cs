@@ -20,7 +20,7 @@ public class ObjectSpawn : MonoBehaviour
     private List<string> TimePickupNames;
 
     [SerializeField]
-    private float SpawnOffset;
+    private float SpawnOffset = 2;
     public enum Value { Common, Uncommon, Rare}
 
     [SerializeField]
@@ -139,9 +139,13 @@ public class ObjectSpawn : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            if(SpawnAmmo)
+            if(SpawnAmmo && name != "Ammo")
             {
-                PhotonNetwork.Instantiate(Path.Combine("Prefabs/Items/Weapons", "Ammo"), Pos + Vector3.right * 2, Quaternion.identity);
+                PhotonNetwork.Instantiate(Path.Combine("Prefabs/Items/Weapons", "Ammo"), Pos + Vector3.right * SpawnOffset, Quaternion.identity);
+                SpawnAmmo = false;
+            }
+            else
+            {
                 SpawnAmmo = false;
             }
 
