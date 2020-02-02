@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591316448500520147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.443, z: 0}
+  m_LocalPosition: {x: -0.03, y: 0.877, z: 0.243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7205484357884609816}
@@ -95,13 +95,13 @@ GameObject:
   - component: {fileID: 1998735168022114544}
   - component: {fileID: 2422598239469427374}
   - component: {fileID: 7989293990407783072}
-  - component: {fileID: 1564899938525796357}
   - component: {fileID: 2879892022225410675}
   - component: {fileID: 1730708798530308366}
   - component: {fileID: 4335425252627452928}
   - component: {fileID: 2119661083107936024}
   - component: {fileID: 5081641219753501624}
   - component: {fileID: 8412111793200123204}
+  - component: {fileID: 2710973273434421317}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337114524710381572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0956168, y: 0.6616883, z: -9.5529175}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5410744023302808016}
@@ -132,7 +132,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337114524710381572}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 4b9ffd4d07711cd459014f489693d9a8, type: 3}
 --- !u!23 &2422598239469427374
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -186,20 +186,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!136 &1564899938525796357
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2337114524710381572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2879892022225410675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +366,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &2710973273434421317
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337114524710381572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.37
+  m_Height: 2.66
+  m_Direction: 1
+  m_Center: {x: 0.00008556247, y: -0.01, z: -0.004572965}
 --- !u!1 &5034664144029229606
 GameObject:
   m_ObjectHideFlags: 0
