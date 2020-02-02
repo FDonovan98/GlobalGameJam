@@ -32,6 +32,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 element.text = "Health: " + playerResource.currentHealth;
             }
         }
+
+        MeshFilter[] meshFilters = this.gameObject.GetComponentsInChildren<MeshFilter>();
+        foreach (MeshFilter element in meshFilters)
+        {
+            if (element.gameObject.name == "Weapon")
+            {
+                element.mesh = this.GetComponent<PlayerAttack>().equipedWeapon.objectModel;
+            }
+        }
+        
     }
 
     // Update is called once per frame
