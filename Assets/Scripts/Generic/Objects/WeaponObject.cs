@@ -13,4 +13,6 @@ public class WeaponObject : BaseObject
     public float TimeBetweenShots = 1.0f;
     //public float ScopeTime = 1.0f;
     // public float zoomMultiplier = 2.0f;
+
+    public AudioClip weaponSound;
 }
